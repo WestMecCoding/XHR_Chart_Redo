@@ -1,5 +1,13 @@
 # Instructions for XHR Chart
 
+## Download this repo to your local machine
+
+## Installing node-modules and running the code
+
+`cd` into server/ and run `npm i` to install the necessary node dependencies.
+
+run `node server` from inside server/ to spin up the chart on localhost:3000
+
 ## Creating the chart
 Go to the [https://people.sc.fsu.edu/~jburkardt/data/csv/csv.html] (FSU CSV data page)
 
@@ -15,8 +23,4 @@ Make sure to change the labels in the javascript code accordingly to best visual
 
 You can look at the documentation for [https://www.chartjs.org/docs/latest/charts/line.html](chart.js) for tips.
 
-## Installing node-modules and running the code
-
-`cd` into server/ and run `npm i` to install the necessary node dependencies.
-
-run `node server` from inside server/ to spin up the chart on localhost:3000
+## Show the project to Morales (AND optionally push the project to your school github)
