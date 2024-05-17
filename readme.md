@@ -7,7 +7,7 @@ Choose a data set that you can derive (discover) a clear X and Y axis.
 
 For example, there is a csv file of the rotten tomato scores of the actor Robert Deniro.
 
-You could make a chart of his highesty rotten tomator score by year.
+You could make a chart of his highest rotten tomato score by year.
 
 Create a .csv file in the data/ folder and format the data in such a way that the first column of data has an heading for the X-axis data and the second column has a heading for the y-axis data.
 
