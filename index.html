@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>XHR and Graph</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  </head>
+  <body>
+   <h1>Description of Chart</h1>
+   <canvas id="myChart" width="400" height="200"></canvas>
+    <script>
+      window.addEventListener("load", fetchData);
+      function fetchData() {
+        const xhr = new XMLHttpRequest();
+        xhr.open("GET", "http://localhost:3000/csv-data", true);
+        xhr.onreadystatechange = function () {
+          if (xhr.readyState === 4 && xhr.status === 200) {
+            let data = xhr.responseText;
+            const nameOfData = processData(data);
+            renderChart(nameOfData)
+            // console.log(globalTemps);
+          } else {
+            console.log("Error", xhr.statusText);
+          }
+        };
+        xhr.send();
+      }
+      function processData(data) {
+        const xAxisItems1 = [];
+        const yAxisItems1 = [];
+        // const yAxisItems2 = [];
+        // const yAxisItems3 = [];
+        rows = data.split("\n").slice(1);
+        rows.forEach((row) => {
+          const cols = row.split(",");
+
+          xAxisItems1.push(cols[0]);
+          yAxisItems1.push(parseFloat(cols[1]));
+          // yAxisItems2.push(parseFloat(cols[2]));
+          // yAxisItems3.push(parseFloat(cols[3]));
+
+          //console.log(cols[0]);
+        });
+        return{ xAxisItems1, yAxisItems1 };
+      }
+
+
+      function renderChart(data) {
+        console.log("hi from renderChart", data);
+        const ctx = document.getElementById('myChart');
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+            labels: data.xAxisItems1,
+            datasets: [
+            {
+              label: '',
+              data: data.yAxisItems1,
+              borderColor: 'rgba(0, 0,255,1)',
+              backgroundColor: 'rgba(255, 99, 132, 0.5)',
+              // yAxisID: 'y',
+            },
+            // {
+            //   label: '',
+            //   data: data.yAxisItems2,
+            //   borderColor: 'rgba(80, 255,160,1)',
+            //   backgroundColor: 'rgba(255, 99, 132, 0.5)',
+            //   // yAxisID: 'y1',
+            // }
+            
+          ]
+            },
+            options: {
+            }
+        });
+      }
+    </script>
+  </body>
+</html>
